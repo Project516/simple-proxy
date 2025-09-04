@@ -2,7 +2,7 @@ name: Sync
 
 on:
   schedule:
-    - cron: '0 * * * *'  
+    - cron: '0 0 * * 0'
   workflow_dispatch:
 
 jobs:
@@ -18,11 +18,11 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
-      - name: Fetch and check out upstream master
+      - name: Fetch and check out upstream 
         run: |
-          git remote add upstream https://github.com/p-stream/simple-proxy
-          git fetch upstream
-          git checkout -B master upstream/dev
+          git remote add proxy https://github.com/p-stream/simple-proxy
+          git fetch proxy
+          git checkout -B upstream proxy/dev
 
       - name: Force push to GitHub master branch
         run: |
