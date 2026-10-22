@@ -1,10 +1,10 @@
-FROM node:20-alpine as base
+FROM node:24-alpine as base
 WORKDIR /app
 
 # Build layer
 FROM base as build
 
-RUN npm i -g pnpm
+RUN npm i -g pnpm@10
 COPY pnpm-lock.yaml package.json ./
 RUN pnpm install --frozen-lockfile
 COPY . .
